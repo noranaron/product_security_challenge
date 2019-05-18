@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/assets/main.css">
+</head>
+
+<body>
+    <div class="login-form">
+        <form action="" method="post">
+            <h2 class="text-center">Multi Factor Authentication</h2>
+            <hr>
+            {{ if .IsMFASetup }}
+                <div class="alert alert-info">
+                    Your multi factor authentication has been set up.
+                </div>
+            {{ end }}
+            <p>Please scan the barcode below with Google Authenticator</p>
+            <br>
+            <div class="text-center">
+                <img src="data:image/png;base64,{{ .ImageB64 }}" alt="">
+                <br><br>
+                <p><small>{{ .Secret }}</small></p>
+            </div>
+
+            <hr>
+
+            <p>To set or reset your Multi Factor Authentication, please input the OTP of the barcode.</p>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="otp" required="required" name="otp">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Set MFA</button>
+            </div>
+            <input type="hidden" name="csrf-token" value="{{ .CSRFToken }}">
+            <input type="hidden" name="otp-secret" value="{{ .Secret}}">
+        </form>
+
+        <form action="" method="post">
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger btn-block" name="remove-mfa" value="true">Remove MFA</button>
+            </div>
+            <input type="hidden" name="csrf-token" value="{{ .CSRFToken }}">
+        </form>
+
+        <p class="text-center"><a href="/">Back</a></p>
+
+        {{ if .Error }}
+            <div class="alert alert-danger">
+                {{ .Error }}
+            </div>
+        {{ end }}
+        {{ if .Info }}
+            <div class="alert alert-info">
+                {{ .Info }}
+            </div>
+        {{ end }}
+    </div>
+</body>
+
+</html>

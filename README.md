@@ -1,6 +1,10 @@
 # Zendesk Product Security
 ### The Zendesk Product Security Challenge
 
+> For the documentations of the author's submission, please see [src/README.md](src/README.md) and [src/FEATURES.md](src/FEATURES.md)
+
+---
+
 Hello friend,
 
 We are super excited that you want to be part of the Product Security team at Zendesk.

@@ -1,0 +1,7 @@
+.idea
+database.db
+config.json
+server.crt
+server.key
+*.log
+zendesk_login

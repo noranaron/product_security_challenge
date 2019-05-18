@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/assets/main.css">
+</head>
+
+<body>
+    <div class="main-panel">
+        <h2 class="text-center">Welcome, <b>{{.User.Username}}</b></h2>
+        <hr>
+        <a class="btn btn-primary btn-block" href="/change-password">Change Password</a>
+        <a class="btn btn-primary btn-block" href="/setup-mfa">Setup Multi-Factor Authentication</a>
+        <a class="btn btn-primary btn-block" href="/sessions">Manage "Remember me" Sessions</a>
+        <hr>
+        <a class="btn btn-danger btn-block" href="/logout">Log out</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/assets/main.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <div class="login-form">
+        <form action="" method="post">
+            <h2 class="text-center">Sign up</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" required="required" name="username">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email address" required="required" name="email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required="required" name="password">
+            </div>
+
+            {{ if .ShowRecaptcha }}
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="{{ .RecaptchaKey }}"></div>
+                </div>
+            {{ end }}
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+            </div>
+            <input type="hidden" name="csrf-token" value="{{ .CSRFToken }}">
+        </form>
+        <p class="text-center"><a href="/login">Log in</a></p>
+        {{ if .Error }}
+            <div class="alert alert-danger">
+                {{ .Error }}
+            </div>
+        {{ end }}
+</body>
+
+</html>
